@@ -10,15 +10,17 @@ public class Tienda{
 	private String numeroDeTienda;
 	private String nombre;	
 	private ArrayList<Producto> productos;
-	private HashSet<Cliente> clientes = new HashSet<Cliente>();
-	//private HashMap<Producto, StockTienda> StockProductos;
+	private HashSet<Cliente> clientes;
+	private HashSet<Vendedor> vendedores;
+	
 	
 	
 	public Tienda(String numeroDeTienda, String nombre) {
 		this.numeroDeTienda = numeroDeTienda;
 		this.nombre = nombre;
 		productos = new ArrayList<>();
-		//StockProductos = new HashMap<Producto, StockTienda>();
+		clientes = new HashSet<Cliente>();
+		vendedores = new HashSet<Vendedor>();
 	}
 
 	
@@ -70,14 +72,34 @@ public class Tienda{
 		Cliente clientePotencial = null;
 		
 		for (Cliente cliente : clientes) {
-			if(cliente.getCuit() != null) {
-				cliente.getCuit();
+			if(cliente.getCodigo() != null) {
+				cliente.getCodigo();
 				clientePotencial = cliente;
 			}else {
-				throw new ClienteInexistenteException("El ya existe");
+				throw new ClienteInexistenteException("El Cliente ya existe");
 			}	
 		}
 		return clientePotencial;
+	}
+
+
+	public void agregarVendedor(Vendedor vendedor) {
+		vendedores.add(vendedor);
+	}
+
+
+	public Vendedor getVendedor(String dniEjemplo)throws VendedorInexistenteException {
+		Vendedor vendedorPotencial = null;
+		
+		for (Vendedor vendedor : vendedores) {
+			if(vendedor.getCodigo() != null) {
+				vendedor.getCodigo();
+				vendedorPotencial = vendedor;
+			}else {
+				throw new VendedorInexistenteException("El vendedor ya existe");
+			}	
+		}
+		return vendedorPotencial;
 	}
 	
 	

@@ -45,14 +45,16 @@ public class testTienda {
 		@Test
 		public void queSePuedaAgregarUnVendedor() throws VendedorInexistenteException {
 			Tienda tienda = new Tienda("30123456780", "Tienda de ejemplo");
+			
 			String dniEjemplo = "12345678";
 			Vendedor vendedor = new Vendedor (dniEjemplo, "Vendedor de ejemplo");
+			
 			tienda.agregarVendedor(vendedor);
 			Vendedor vendedorActual = tienda.getVendedor(dniEjemplo);
 			assertEquals(vendedor, vendedorActual);
 			
 		}
-		/*
+		
 		@Test
 		public void queSePuedaHacerUnaVentaDeUnProducto() throws VentaInexistenteException, VendibleInexistenteException, StockInsuficienteException {
 			Tienda tienda = new Tienda("30123456780", "Tienda de ejemplo");
@@ -74,7 +76,7 @@ public class testTienda {
 			
 		}
 		
-		
+		/*
 		@Test (expected = StockInsuficienteException.class)
 		public void queNoSePuedaAgregarUnaVentaPorStockInsuficiente() throws VentaInexistenteException, VendibleInexistenteException, StockInsuficienteException {
 			Tienda tienda = new Tienda("30123456780", "Tienda de ejemplo");
