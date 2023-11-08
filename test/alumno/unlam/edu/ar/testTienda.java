@@ -1,15 +1,11 @@
 package alumno.unlam.edu.ar;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
 
 import org.junit.Test;
 
 public class testTienda {
-	
-	@Test
-	public void test() {
-		fail("Not yet implemented");
-	}
 	
 		@Test
 		public void queSePuedaAgregarProductos() throws VendibleInexistenteException {
@@ -17,6 +13,7 @@ public class testTienda {
 			Producto producto = new Producto("1", "Producto nuevo", 100d);
 			tienda.agregarProducto(producto);
 			Vendible productoActual = (Producto) tienda.getVendible(producto.getCodigo());
+			
 			assertEquals(producto, productoActual);
 		}
 	/*	

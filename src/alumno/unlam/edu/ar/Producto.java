@@ -1,15 +1,30 @@
 package alumno.unlam.edu.ar;
 
-public class Producto {
+public class Producto implements Vendible {
 
-	private String numeroDeProdcuto;
-	private String descripcion;
+	private String codigo;
+	private String nombre;
 	private Double precio;
 
-	public Producto(String numeroDeProdcuto, String descripcion, Double precio) {
-		this.numeroDeProdcuto = numeroDeProdcuto;
-		this.descripcion = descripcion;
+	public Producto(String codigo, String nombre, Double precio) {
+		this.codigo = codigo;
+		this.nombre = nombre;
 		this.precio = precio;
+	}
+
+	@Override
+	public String getCodigo() {
+		return codigo;
+	}
+
+	@Override
+	public String getNombre() {
+		return nombre;
+	}
+
+	@Override
+	public Double getPrecio() {
+		return precio;
 	}
 
 }
