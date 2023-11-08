@@ -16,19 +16,21 @@ public class testTienda {
 			
 			assertEquals(producto, productoActual);
 		}
-	/*	
+	
 		@Test
 		public void queSePuedaAgregarStock() throws VendibleInexistenteException {
 			Tienda tienda = new Tienda("30123456780", "Tienda de ejemplo");
 			Producto producto = new Producto("1", "Producto nuevo", 100d);
+			
 			Integer cantidad = 10;
 			tienda.agregarProducto(producto, cantidad);
+			
 			Integer stockActual = tienda.getStock((Producto) producto); 
-			assertEquals(cantidad, stockActual);
 			
-			
+			assertEquals(cantidad, stockActual);	
 		}
 		
+				
 		@Test
 		public void queSePuedaAgregarUnCliente() throws ClienteInexistenteException {
 			Tienda tienda = new Tienda("30123456780", "Tienda de ejemplo");
@@ -40,6 +42,7 @@ public class testTienda {
 			
 		}
 		
+		/*
 		@Test
 		public void queSePuedaAgregarUnVendedor() throws VendedorInexistenteException {
 			Tienda tienda = new Tienda("30123456780", "Tienda de ejemplo");

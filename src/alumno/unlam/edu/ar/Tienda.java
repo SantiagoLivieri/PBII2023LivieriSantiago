@@ -2,17 +2,21 @@ package alumno.unlam.edu.ar;
 
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.HashMap;
 
-public class Tienda {
+public class Tienda{
 
 	private String numeroDeTienda;
-	private String nombre;
+	private String nombre;	
 	private ArrayList<Producto> productos;
+	//private HashMap<Producto, StockTienda> StockProductos;
+	
 	
 	public Tienda(String numeroDeTienda, String nombre) {
 		this.numeroDeTienda = numeroDeTienda;
 		this.nombre = nombre;
-		productos = new ArrayList<>();;
+		productos = new ArrayList<>();
+		//StockProductos = new HashMap<Producto, StockTienda>();
 	}
 
 	
@@ -35,4 +39,23 @@ public class Tienda {
 		return productoVendible;
 	}
 
+
+	public void agregarProducto(Producto producto, Integer cantidad) {		
+			for (int i = 0; i < cantidad; i++) {
+				productos.add(producto);
+			}
+	}
+
+
+	public Integer getStock(Producto producto) {
+		Integer stock = 0;
+		
+		for (Producto producto1 : productos) {
+			if(producto1.getCodigo() != null) {
+				stock++;
+			}
+		}
+		return stock;
+	}
+	
 }
