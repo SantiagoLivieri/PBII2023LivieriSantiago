@@ -3,12 +3,14 @@ package alumno.unlam.edu.ar;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.HashMap;
+import java.util.HashSet;
 
 public class Tienda{
 
 	private String numeroDeTienda;
 	private String nombre;	
 	private ArrayList<Producto> productos;
+	private HashSet<Cliente> clientes = new HashSet<Cliente>();
 	//private HashMap<Producto, StockTienda> StockProductos;
 	
 	
@@ -57,5 +59,26 @@ public class Tienda{
 		}
 		return stock;
 	}
+
+
+	public void agregarCliente(Cliente cliente) {
+		clientes.add(cliente);
+	}
+
+
+	public Cliente getCliente(String cuitEjemplo) throws ClienteInexistenteException{
+		Cliente clientePotencial = null;
+		
+		for (Cliente cliente : clientes) {
+			if(cliente.getCuit() != null) {
+				cliente.getCuit();
+				clientePotencial = cliente;
+			}else {
+				throw new ClienteInexistenteException("El ya existe");
+			}	
+		}
+		return clientePotencial;
+	}
+	
 	
 }
