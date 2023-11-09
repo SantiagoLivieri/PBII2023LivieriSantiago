@@ -117,6 +117,7 @@ public class Tienda{
 		
 		for (Producto producto1 : productos) {
 			if(producto1.getCodigo() != null) {
+				producto = producto1;
 				stock--;
 			}
 		}
