@@ -2,6 +2,9 @@ package alumno.unlam.edu.ar;
 
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.Map;
+
+
 import java.util.HashMap;
 import java.util.HashSet;
 
@@ -13,7 +16,7 @@ public class Tienda{
 	private HashSet<Cliente> clientes;
 	private HashSet<Vendedor> vendedores;
 	private ArrayList<Venta> ventas;
-	private HashMap<Venta, Producto> stockeable;
+	private HashMap<Producto, Integer> stockeable;
 	
 	
 	public Tienda(String numeroDeTienda, String nombre) {
@@ -23,7 +26,7 @@ public class Tienda{
 		ventas= new ArrayList<Venta>();
 		clientes = new HashSet<Cliente>();
 		vendedores = new HashSet<Vendedor>();
-		stockeable = new HashMap<Venta, Producto>();
+		stockeable = new HashMap<Producto , Integer>();
 		
 	}
 
@@ -48,21 +51,23 @@ public class Tienda{
 	}
 
 
-	public void agregarProducto(Producto producto, Integer cantidad) {		
+	public void agregarProducto(Producto producto, Integer cantidad) {	
+		
 			for (int i = 0; i < cantidad; i++) {
-				productos.add(producto);
+				stockeable.put(producto, cantidad);
 			}
+			
 	}
 
-
-	public Integer getStock(Producto producto) {
+		
+	public Integer getStock(Producto producto) {	
 		Integer stock= 0;
 		
-		for (Producto producto1 : productos) {
-			if(producto1.getCodigo() != null) {
-				stock++;
-			}
-		}
+	for (Map.Entry<Producto, Integer> entry : stockeable.entrySet()) {
+		Producto key = entry.getKey();
+		Integer val = entry.getValue();
+		stock =+ val; 
+	}
 		return stock;
 	}
 
@@ -113,15 +118,13 @@ public class Tienda{
 
 
 	public void agregarProductoAVenta(String codigo, Producto producto, Integer cantidadVendida) {
-			Integer stock = cantidadVendida;
+		Integer stock= 0;
 		
-		for (Producto producto1 : productos) {
-			if(producto1.getCodigo() != null) {
-				producto = producto1;
-				stock--;
+		for (Map.Entry<Producto, Integer> entry : stockeable.entrySet()) {
+			Producto key = entry.getKey();
+			Integer val = entry.getValue();
+			stockeable.replace(producto, (getStock(producto)-cantidadVendida));
 			}
-		}
-	
 		}
 
 

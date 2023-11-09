@@ -1,5 +1,7 @@
 package alumno.unlam.edu.ar;
 
+import java.util.Objects;
+
 public class Producto implements Vendible {
 
 	private String codigo;
@@ -26,5 +28,7 @@ public class Producto implements Vendible {
 	public Double getPrecio() {
 		return precio;
 	}
+
+
 
 }
