@@ -12,15 +12,19 @@ public class Tienda{
 	private ArrayList<Producto> productos;
 	private HashSet<Cliente> clientes;
 	private HashSet<Vendedor> vendedores;
-	
+	private ArrayList<Venta> ventas;
+	private HashMap<Venta, Producto> stockeable;
 	
 	
 	public Tienda(String numeroDeTienda, String nombre) {
 		this.numeroDeTienda = numeroDeTienda;
 		this.nombre = nombre;
-		productos = new ArrayList<>();
+		productos = new ArrayList<Producto>();
+		ventas= new ArrayList<Venta>();
 		clientes = new HashSet<Cliente>();
 		vendedores = new HashSet<Vendedor>();
+		stockeable = new HashMap<Venta, Producto>();
+		
 	}
 
 	
@@ -52,7 +56,7 @@ public class Tienda{
 
 
 	public Integer getStock(Producto producto) {
-		Integer stock = 0;
+		Integer stock= 0;
 		
 		for (Producto producto1 : productos) {
 			if(producto1.getCodigo() != null) {
@@ -101,6 +105,36 @@ public class Tienda{
 		}
 		return vendedorPotencial;
 	}
+
+
+	public void agregarVenta(Venta ticket) {
+		ventas.add(ticket);
+	}
+
+
+	public void agregarProductoAVenta(String codigo, Producto producto, Integer cantidadVendida) {
+			Integer stock = cantidadVendida;
+		
+		for (Producto producto1 : productos) {
+			if(producto1.getCodigo() != null) {
+				stock--;
+			}
+		}
+	
+		}
+
+
+	public void agregarServicio(Servicio vendible) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	public void agregarServicioAVenta(String codigo, Servicio vendible) {
+		// TODO Auto-generated method stub
+		
+	}
+	
 	
 	
 }

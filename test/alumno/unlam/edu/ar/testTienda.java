@@ -40,8 +40,7 @@ public class testTienda {
 			Cliente clienteActual = tienda.getCliente(cuitEjemplo);
 			assertEquals(cliente, clienteActual);	
 		}
-		
-		
+			
 		@Test
 		public void queSePuedaAgregarUnVendedor() throws VendedorInexistenteException {
 			Tienda tienda = new Tienda("30123456780", "Tienda de ejemplo");
@@ -66,17 +65,21 @@ public class testTienda {
 			Vendible producto = new Producto("1", "Producto nuevo", 100d);
 			Integer stockInicial = 10;
 			tienda.agregarProducto((Producto) producto, stockInicial);
+			
 			Venta ticket = new Venta("C-0001", cliente, vendedor);
 			tienda.agregarVenta(ticket);
+			
 			Integer cantidadVendida = 5;
 			tienda.agregarProductoAVenta(ticket.getCodigo(), (Producto) producto, cantidadVendida);
+			
 			Integer stockEsperado = 5;
 			Integer stockActual = tienda.getStock((Producto) producto);
+			
 			assertEquals(stockEsperado, stockActual);
 			
 		}
 		
-		/*
+		
 		@Test (expected = StockInsuficienteException.class)
 		public void queNoSePuedaAgregarUnaVentaPorStockInsuficiente() throws VentaInexistenteException, VendibleInexistenteException, StockInsuficienteException {
 			Tienda tienda = new Tienda("30123456780", "Tienda de ejemplo");
@@ -146,9 +149,6 @@ public class testTienda {
 			assertEquals(totalEsperado, totalActual);
 			
 		}
-		
-		*/
-		
 
 	}
 
